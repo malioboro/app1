@@ -1,3 +1,11 @@
+class Player
+  attr_accessor :name, :blood, :mana
+  def initialize
+    @name = gets.chomp
+    @blood = 100
+    @mana = 40
+  end
+end
 class BattleArena
   def initialize
     onStart()
@@ -14,7 +22,7 @@ class BattleArena
     end
   end
   def newPlayer
-    totalPlayers = 0
+    totalPlayers = 3
     case totalPlayers
     when 0
       puts "No player in game"
@@ -26,7 +34,7 @@ class BattleArena
       puts "There are two players in game"
       puts "You can create one more players or you can just begin the game"
     when 3
-      puts "There are three players in game"
+      puts "Room is full, there are three players in game"
       puts "Just begin the game"
     else
       puts "unknown command"
@@ -57,4 +65,9 @@ class BattleArena
     puts"# Current Player       #"
   end
 end
+player=Player.new
+puts player.name
+puts player.blood
+puts player.mana
+
 game=BattleArena.new
