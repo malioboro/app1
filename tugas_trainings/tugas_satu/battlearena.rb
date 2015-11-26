@@ -114,4 +114,5 @@ p = Player.new
 p.add("lich")
 p.add("luna")
 p.add("snip")
+p.add(gets.chomp)
 p.view
