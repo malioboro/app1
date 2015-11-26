@@ -1,9 +1,6 @@
 class Player
-  attr_accessor :name, :blood, :mana
-  def initialize
-    @name = gets.chomp
-    @blood = 100
-    @mana = 40
+  def tesPlayer
+
   end
 end
 class BattleArena
@@ -65,9 +62,37 @@ class BattleArena
     puts"# Current Player       #"
   end
 end
-player=Player.new
-puts player.name
-puts player.blood
-puts player.mana
-
-game=BattleArena.new
+player = []
+player = [
+  ["luna", 100, 40],
+  ["spec", 100, 40],
+  ["snip", 100, 40]
+]
+player.push(["bara", 100, 40])
+player.push(["lina", 100, 40])
+player.push(["ursa", 100, 40])
+player1 = []
+player1 = ["lich", 100, 40]
+player.push(player1)
+puts player.length
+case player.length
+when 0
+  puts "No player in game"
+  puts "Create at least two players to begin the game"
+when 1
+  puts "Only one player in game"
+  puts "Create at least two players to begin the game"
+when 2
+  puts "There are two players"
+  puts "You can create one more players or you can just begin the game"
+when 3
+  puts "Room is full, there are ready three players"
+  puts "Just begin the game"
+else
+  puts "unknown command"
+end
+player[1][1]=player[1][1] -20
+puts "Player name | Blood | Mana"
+for i in 0..player.length-1
+  puts "#{player[i][0]} | #{player[i][1]} | Mana =#{player[i][2]}"
+end
