@@ -1,8 +1,4 @@
-class Player
-  def tesPlayer
 
-  end
-end
 class BattleArena
   def initialize
     onStart()
@@ -62,6 +58,7 @@ class BattleArena
     puts"# Current Player       #"
   end
 end
+=begin
 player = []
 player = [
   ["luna", 100, 40],
@@ -74,6 +71,7 @@ player.push(["ursa", 100, 40])
 player1 = []
 player1 = ["lich", 100, 40]
 player.push(player1)
+
 puts player.length
 case player.length
 when 0
@@ -96,3 +94,24 @@ puts "Player name | Blood | Mana"
 for i in 0..player.length-1
   puts "#{player[i][0]} | #{player[i][1]} | Mana =#{player[i][2]}"
 end
+=end
+class Player
+  attr_accessor :player
+  def initialize
+    @player = []
+  end
+  def add(name)
+    @player.push([name,100,40])
+  end
+  def view
+    puts "Player name | Blood | Mana"
+    for i in 0..player.length-1
+      puts "#{player[i][0]} | #{player[i][1]} | Mana =#{player[i][2]}"
+    end
+  end
+end
+p = Player.new
+p.add("lich")
+p.add("luna")
+p.add("snip")
+p.view
