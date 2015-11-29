@@ -3,12 +3,14 @@
 <p>
 <%= article.content.truncate(20) %>
 <%= link_to 'read more', article_path(article.id) %>
-</p>
-<h4>status : <%= article.status %></h4>
-<p>
+<span> | </span>
 <span><%= link_to 'edit', edit_article_path(article.id) %><span>
-</p>
 <span> | </span>
 <span><%= link_to 'delete', article_path(article.id), method: "DELETE", data: {confirm: 'Delete this data ? '} %><span>
+</p>
+<h4>status : <%= article.status %></h4>
 <hr/>
 <% end %>
+<div>
+<%= link_to "add new", new_article_path %>
+</div>
