@@ -5,5 +5,5 @@ class Article < ActiveRecord::Base
   validates :status, presence: true
   scope :status_active, -> {where(status: 'active')}
   scope :status_off, -> {where(status: 'off')}
-  default_scope status_active
+#  default_scope status_active
 end
