@@ -12,7 +12,13 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params_user)
     if @user.save
-      flash[:notice] = "Success Add Records"
+      begin
+        ConfirmationMailer.confirm_email("#{@user.email}", @user.activation_token).deliver
+      rescue
+        flash[:notice] = "activation instruction fails send to your email"
+      end
+      #flash[:notice] = "Success Add Records"
+      flash[:notice] = "activation instruction has send to #{@user.email}"
       redirect_to root_url
     else
       flash[:error] = "data not valid"
@@ -22,6 +28,6 @@ class UsersController < ApplicationController
 
   private
     def params_user
-      params.require(:user).permit(:username, :email, :password, :password_confirmation, :humanizer_answer, :humanizer_question_id)
+      params.require(:user).permit(:username, :email, :password, :password_confirmation, :humanizer_answer, :humanizer_question_id, :activation_token)
     end
 end
