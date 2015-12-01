@@ -1,10 +1,11 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password, :username, :password_confirmation, :humanizer_answer, :humanizer_question_id, :activation_token, :activation_status
+  attr_accessible :email, :password, :username, :password_confirmation, :activation_token, :activation_status
 
   attr_accessor :password
 
   before_save :add_salt_and_hash
   before_create :add_activation_token
+  has_many :comments, dependent: :destroy
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
@@ -21,7 +22,5 @@ class User < ActiveRecord::Base
     self.activation_token = SecureRandom.urlsafe_base64
     self.activation_status = "not activated"
   end
-
-  include Humanizer
-  require_human_on :create
+  
 end

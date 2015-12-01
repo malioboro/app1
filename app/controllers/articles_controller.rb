@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  before_filter :check_current_user, only: [:new, :create, :edit, :update, :destroy]
   def index
     @articles = Article.all
   end
@@ -13,6 +14,8 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find_by_id(params[:id])
+    @comments = @article.comments.order("id desc")
+    @comment = Comment.new
   end
 
   def create
@@ -50,6 +53,6 @@ class ArticlesController < ApplicationController
 
   private
     def params_article
-        params.require(:article).permit(:title, :content, :status)
+      params.require(:article).permit(:title, :content, :status)
     end
 end
