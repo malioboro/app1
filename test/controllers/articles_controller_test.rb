@@ -49,6 +49,6 @@ end
 private
   def create_session(email)
     user = User.find_by_email(email)
-    session[:user] = user.id unless user.nil?
+    session[:user] = user unless user.nil?
   end
 end
