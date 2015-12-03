@@ -23,7 +23,7 @@ App1::Application.configure do
       #  :port => 465,
        :port => 587,
        :domain => "@gmail.com",
-       :user_name => "your_gmail_address",
+       :user_name => "your_gmail_username",
        :password => "your_gmail_password",
       #  :authentication => "login",
       #  :ssl => true,
