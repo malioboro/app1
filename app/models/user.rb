@@ -1,10 +1,7 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password, :username, :password_confirmation, :activation_token, :activation_status, :humanizer_answer, :humanizer_question_id
+  attr_accessible :email, :password, :username, :password_confirmation, :activation_token, :activation_status
 
   attr_accessor :password
-
-  include Humanizer
-  require_human_on :create
 
   before_save :add_salt_and_hash
   before_create :add_activation_token
