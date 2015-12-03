@@ -6,7 +6,7 @@ ActionMailer::Base.smtp_settings = {
   :port => 465,
   #:port => 587,
   :domain => "@gmail.com",
-  :user_name => "your_gmail_address",
+  :user_name => "your_gmail_username",
   :password => "your_gmail_password",
   :authentication => "login",
   :ssl => true,
@@ -20,7 +20,7 @@ class ConfirmationMailer < ActionMailer::Base
   def confirm_email(target_email, activation_token)
     @activation_token = activation_token
       mail(:to => target_email,
-      :from => "tastestos2015@gmail.com",
+      :from => "your_email_address",
       :subject => "[Training - Rails 4]") do |format|
       format.html { render 'confirm_email'}
     end
