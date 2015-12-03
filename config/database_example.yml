@@ -27,8 +27,8 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
-  username: postgres
-  password: postgres
+  username: your_username
+  password: your_password
 
 #this for development setting
 development:
@@ -38,7 +38,7 @@ development:
 #this for test environment setting
 test:
   <<: *default
-  database: app1_setting
+  database: app1_testing
 
 #this for production environment setting
 production:
